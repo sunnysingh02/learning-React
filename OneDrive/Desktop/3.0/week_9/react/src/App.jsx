@@ -42,6 +42,7 @@ function App() {
 
 const ProfileCard = ({ userName, avatarImage, name, bio }) => {
   const [like, setLike] = useState(0);
+  const [showBio, setShowBio] = useState(true);
   useEffect(() => {
     if (like > 0) {
       alert(`${name} received a like!`);
@@ -55,12 +56,19 @@ const ProfileCard = ({ userName, avatarImage, name, bio }) => {
       <form style={{ backgroundColor: "", border: '2px dotted #4CAF50', padding: '20px', margin: '10px', borderRadius: '8px' }}>
         <img src={avatarImage} style={{ width: 50, height: 50, }} /><br />
         <b>{name}</b>
-        <p>{bio}</p>
+        {showBio && <p>{bio}</p>}
+
 
       </form>
       <div>
         <button onClick={() => setLike(like + 1)} disabled={like >= 10}>Like {like}</button>
         {like > 0 && <p>This profile is liked!</p>}
+
+      </div>
+      <div>
+        <button onClick={() => setShowBio(!showBio)}>
+          {showBio ? "Hide Bio" : "Show Bio"} 
+        </button>
 
       </div>
 
