@@ -1,6 +1,7 @@
 
-
+import { useState } from "react";
 function App() {
+ 
   const users = [
   {
     userName: "sunny05",
@@ -40,6 +41,8 @@ function App() {
 }
 
 const ProfileCard = ({ userName, avatarImage, name, bio }) => {
+   const [like, setLike] = useState(0);
+
   return (
     <div>
       <h1>userName:- {userName}</h1>
@@ -49,6 +52,9 @@ const ProfileCard = ({ userName, avatarImage, name, bio }) => {
         <p>{bio}</p>
 
       </form>
+      <div>
+        <button onClick={()=> setLike(like + 1)}>Like {like}</button>
+      </div>
 
     </div>
   )
